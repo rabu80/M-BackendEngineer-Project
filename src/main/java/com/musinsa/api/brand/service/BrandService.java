@@ -26,7 +26,7 @@ public class BrandService {
     }
 
     @Transactional
-    public void saveBrand(BrandSaveDto brandSaveDto) throws Exception {
+    public Brand saveBrand(BrandSaveDto brandSaveDto) {
 
         if(isExistsBrandName(brandSaveDto.getBrandName())) {
             throw new DuplicateBrandException();
@@ -35,24 +35,22 @@ public class BrandService {
         Brand brand = Brand.builder()
                 .brandName(brandSaveDto.getBrandName())
                 .build();
-        brandRepository.save(brand);
+        return brandRepository.save(brand);
     }
 
     @Transactional
     public void updateBrand(Long brandId, BrandUpdateDto brandUpdateDto) {
-
-        if(!isExistsBrandId(brandId)) {
-            throw new BrandNotFoundException();
-        }
-
-        Brand brand = Brand.builder()
-                .brandName(brandUpdateDto.getBrandName())
-                .build();
-        brandRepository.save(brand);
+        Brand savedBrand = brandRepository.findById(brandId)
+                .orElseThrow(BrandNotFoundException::new);
+        savedBrand.update(brandUpdateDto);
+        brandRepository.save(savedBrand);
     }
 
     @Transactional
-    public void deleteBrand(Long brandId) throws Exception {
+    public void deleteBrand(Long brandId) {
+        if(!isExistsBrandId(brandId)) {
+            throw new BrandNotFoundException();
+        }
         brandRepository.deleteById(brandId);
     }
 
@@ -69,7 +67,7 @@ public class BrandService {
         if(!isExistsBrandId(brandId)) {
             throw new BrandNotFoundException();
         }
-        return modelMapper.map(brandRepository.findById(brandId), BrandDto.class);
+        return modelMapper.map(brandRepository.findById(brandId).get(), BrandDto.class);
     }
 
     private boolean isExistsBrandName(String brandName) {

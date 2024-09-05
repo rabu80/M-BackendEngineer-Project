@@ -39,7 +39,7 @@ public class CodiController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("api/v1/lowHighPriceBrandItemsByCategory/{categoryName}")
     @Operation(summary = "구현과제: 3번", description = "카테고리 이름으로 최저, 최고 가격 브랜드와 상품 가격을 조회하는 API")
-    BrandPrcDto.LowestPrcBrandByCategoryResponseDto getLowHighPriceBrandItemsByCategory(@PathVariable String categoryName) {
+    BrandPrcDto.LowestPrcBrandByCategoryResponseDto getLowHighPriceBrandItemsByCategory(@PathVariable("categoryName") String categoryName) {
         return codiService.getLowHighPriceBrandItemsByCategory(categoryName);
     }
 

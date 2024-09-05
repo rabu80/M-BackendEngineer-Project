@@ -1,8 +1,7 @@
 package com.musinsa.api.item.dto;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,15 +12,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ItemSaveDto {
 
-  @NotEmpty
+  @NotNull
   private String brandName;
 
-  @NotEmpty
+  @NotNull
   @Min(value = 100)
-  @Max(value = 1000000000)
   private Long itemPrice;
 
-  @NotEmpty
+  @NotNull
   private String categoryName;
 
   @Builder

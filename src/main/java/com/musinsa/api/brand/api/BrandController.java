@@ -31,15 +31,15 @@ public class BrandController {
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("api/v1/brands/{brandId}")
     @Operation(summary = "브랜드수정 API", description = "브랜드정보를 수정한다.")
-    public void updateBrand(@PathVariable Long brandId,
+    public void updateBrand(@PathVariable("brandId") Long brandId,
                               @Valid @RequestBody BrandUpdateDto brandUpdateDto) throws Exception {
         brandService.updateBrand(brandId, brandUpdateDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("api/v1/brands/{itemId}")
+    @DeleteMapping("api/v1/brands/{brandId}")
     @Operation(summary = "브랜드삭제 API", description = "브랜드정보를 삭제한다.")
-    public void deleteProduct(@PathVariable Long brandId) throws Exception {
+    public void deleteProduct(@PathVariable("brandId") Long brandId) throws Exception {
         brandService.deleteBrand(brandId);
     }
 
@@ -53,7 +53,7 @@ public class BrandController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("api/v1/brands/{brandId}")
     @Operation(summary = "브랜드ID를 이용한 브랜드조회 API", description = "브랜드ID기준 브랜드 1건을 조회한다.(Unique)")
-    BrandDto getBrandByBrandId(@PathVariable Long brandId) {
+    BrandDto getBrandByBrandId(@PathVariable("brandId") Long brandId) {
         return brandService.getBrandByBrandId(brandId);
     }
 

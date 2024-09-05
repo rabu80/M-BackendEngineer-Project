@@ -1,5 +1,6 @@
 package com.musinsa.api.item.domain;
 
+import com.musinsa.api.item.dto.ItemUpdateDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,5 +31,11 @@ public class Item {
         this.brandId = brandId;
         this.itemPrice = itemPrice;
         this.categoryName = categoryName;
+    }
+
+    public void updateItem(ItemUpdateDto itemUpdateDto) {
+        this.brandId = itemUpdateDto.getBrandId();
+        this.itemPrice = itemUpdateDto.getItemPrice();
+        this.categoryName = itemUpdateDto.getCategoryName();
     }
 }

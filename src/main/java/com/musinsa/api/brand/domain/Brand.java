@@ -1,5 +1,6 @@
 package com.musinsa.api.brand.domain;
 
+import com.musinsa.api.brand.dto.BrandUpdateDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +19,11 @@ public class Brand {
     private String brandName;
 
     @Builder
-    public Brand(String brandName) {
+    public Brand(Long brandId, String brandName) {
         this.brandName = brandName;
+    }
+
+    public void update(BrandUpdateDto brandUpdateDto){
+        this.brandName = brandUpdateDto.getBrandName();
     }
 }

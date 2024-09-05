@@ -33,6 +33,7 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	runtimeOnly("com.h2database:h2")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine")
 }
 
 tasks.withType<Test> {

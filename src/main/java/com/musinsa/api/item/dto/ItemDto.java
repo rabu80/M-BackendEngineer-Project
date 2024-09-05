@@ -1,5 +1,6 @@
 package com.musinsa.api.item.dto;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,6 @@ public class ItemDto {
   private Long brandId;
   private Long itemPrice;
   private String categoryName;
-  private String brandName;
 
   @Builder
   public ItemDto(Long itemId, Long brandId, Long itemPrice, String categoryName) {

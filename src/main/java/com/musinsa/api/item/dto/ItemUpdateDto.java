@@ -1,7 +1,8 @@
 package com.musinsa.api.item.dto;
 
-import jakarta.validation.constraints.Max;
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +13,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ItemUpdateDto {
 
+  @Hidden
+  private Long brandId;
+
+  @NotEmpty
   private String brandName;
 
   @Min(value = 100)
-  @Max(value = 1000000000)
   private Long itemPrice;
 
+  @NotEmpty
   private String categoryName;
 
   @Builder

@@ -33,7 +33,7 @@ public class ItemService {
     }
 
     @Transactional
-    public void saveItem(ItemSaveDto itemSaveDto) throws Exception {
+    public void saveItem(ItemSaveDto itemSaveDto) {
 
         Long brandId = getBrandIdByName(itemSaveDto.getBrandName());
         if(!itemSaveDto.getBrandName().isEmpty() && brandId == null) {
@@ -55,10 +55,8 @@ public class ItemService {
 
     @Transactional
     public void updateItem(Long itemId, ItemUpdateDto itemUpdateDto) {
-
-        if(!isExistsItem(itemId)) {
-            throw new ItemNotFoundException();
-        }
+        Item savedItem = itemRepository.findById(itemId)
+                .orElseThrow(ItemNotFoundException::new);
 
         Long brandId = getBrandIdByName(itemUpdateDto.getBrandName());
         if(!itemUpdateDto.getBrandName().isEmpty() && brandId == null) {
@@ -69,17 +67,13 @@ public class ItemService {
             throw new CategoryNotFoundException();
         }
 
-        Item item = Item.builder()
-                .brandId(brandId)
-                .itemPrice(itemUpdateDto.getItemPrice())
-                .categoryName(itemUpdateDto.getCategoryName())
-                .build();
-
-        itemRepository.save(item);
+        itemUpdateDto.setBrandId(brandId);
+        savedItem.updateItem(itemUpdateDto);
+        itemRepository.save(savedItem);
     }
 
     @Transactional
-    public void deleteItem(Long itemId) throws Exception {
+    public void deleteItem(Long itemId) {
         if(!isExistsItem(itemId)) {
             throw new ItemNotFoundException();
         }
@@ -91,7 +85,7 @@ public class ItemService {
         if(!isExistsItem(itemId)) {
             throw new ItemNotFoundException();
         }
-        return modelMapper.map(itemRepository.findById(itemId), ItemDto.class);
+        return modelMapper.map(itemRepository.findById(itemId).get(), ItemDto.class);
     }
 
     @Transactional(readOnly = true)
