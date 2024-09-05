@@ -1,0 +1,28 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        ddl-auto: create
+        show-sql: true
+        format_sql: true
+  sql:
+    init:
+      data-locations: classpath:query/testDataInsert.sql
+      mode: always
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    platform: h2
+    data: classpath:query/testDataInsert.sql
