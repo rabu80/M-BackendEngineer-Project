@@ -2,17 +2,17 @@
 
 ## About Project
 ### 프로젝트 환경
-> Spring Boot 3.3.3
-> Java 22
-> Graddle 8.8
-> 
+>* Spring Boot 3.3.3
+>* Java 22
+>* Graddle 8.8
+
 ### 라이브러리
-> Spring Data JPA,
-> QueryDSL,
-> h2 database,
-> Swagger,
-> Lombok,
-> modelmapper, 
+>* Spring Data JPA
+>* QueryDSL
+>* h2 database
+>* Swagger
+>* Lombok
+>* modelmapper 
 
 ### 패키지 구조
 > **1Depth Domain & Global**
