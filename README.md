@@ -1,4 +1,4 @@
-# [musinsa] Java(Kotlin) Backend Engineer - 과제
+# [MUSINSA] Java(Kotlin) Backend Engineer - 과제
 
 ## About Project
 ### 프로젝트 환경
