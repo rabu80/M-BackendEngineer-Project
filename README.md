@@ -28,10 +28,11 @@
 >>* repository : 데이터베이스에 CRUD 커넥션 처리
 
 ## 테스트 방법
-1. Run을 통한 서버기동 시 다음의 SQL문으로 "query/testDataInsert.sql" 과제에서 제시된 Test Data 일괄 Insert
-2. http://localhost:8080/swagger-ui/index.html Swagger를 이용하여 개별 API Test 가능
-3. 과제 1~3번의 경우 codi-controller API영역에 구현
-4. 과제 4번 브랜드 및 상품 추가/업데이트/삭제 기능은 각각 item-controller, brand-controller API영역에 구현
+1. MBackendEngineerProjectApplication -> Run을 통한 서버기동
+2. 서버기동 시 다음의 SQL문으로 "query/testDataInsert.sql" 과제에서 제시된 Test Data 일괄 Insert
+3. http://localhost:8080/swagger-ui/index.html Swagger를 이용하여 개별 API Test 가능
+4. 과제 1~3번의 경우 codi-controller API영역에 구현
+5. 과제 4번 브랜드 및 상품 추가/업데이트/삭제 기능은 각각 item-controller, brand-controller API영역에 구현
 
 
 ## 기타
